@@ -5,7 +5,7 @@ The following is an example of a proxy script that can be used with the
 `HTTPS` connections to `example.com:443` and declines all other requests.
 
 ```javascript
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
 /**
  * @license

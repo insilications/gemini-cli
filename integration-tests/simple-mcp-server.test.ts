@@ -17,7 +17,7 @@ import { writeFileSync } from 'node:fs';
 
 // Create a minimal MCP server that doesn't require external dependencies
 // This implements the MCP protocol directly using Node.js built-ins
-const serverScript = `#!/usr/bin/env node
+const serverScript = `#!/usr/bin/env bun
 /**
  * @license
  * Copyright 2025 Google LLC

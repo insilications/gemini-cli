@@ -17,27 +17,27 @@
     "sandboxImageUri": "us-docker.pkg.dev/gemini-code-dev/gemini-cli/sandbox:0.20.0-nightly.20251127.5bed97064"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development node scripts/start.js",
+    "start": "cross-env NODE_ENV=development bun run --bun scripts/start.js",
     "start:a2a-server": "CODER_AGENT_PORT=41242 npm run start --workspace @google/gemini-cli-a2a-server",
-    "debug": "cross-env DEBUG=1 node --inspect-brk scripts/start.js",
-    "deflake": "node scripts/deflake.js",
+    "debug": "cross-env DEBUG=1 bun run --bun --inspect-brk scripts/start.js",
+    "deflake": "bun run --bun scripts/deflake.js",
     "deflake:test:integration:sandbox:none": "npm run deflake -- --command=\"npm run test:integration:sandbox:none -- --retry=0\"",
     "deflake:test:integration:sandbox:docker": "npm run deflake -- --command=\"npm run test:integration:sandbox:docker -- --retry=0\"",
     "auth:npm": "npx google-artifactregistry-auth",
     "auth:docker": "gcloud auth configure-docker us-west1-docker.pkg.dev",
     "auth": "npm run auth:npm && npm run auth:docker",
-    "generate": "node scripts/generate-git-commit-info.js",
+    "generate": "bun run --bun scripts/generate-git-commit-info.js",
     "predocs:settings": "npm run build --workspace @google/gemini-cli-core",
     "schema:settings": "tsx ./scripts/generate-settings-schema.ts",
     "docs:settings": "tsx ./scripts/generate-settings-doc.ts",
     "docs:keybindings": "tsx ./scripts/generate-keybindings-doc.ts",
-    "build": "node scripts/build.js",
+    "build": "bun run --bun scripts/build.js",
     "build-and-start": "npm run build && npm run start",
-    "build:vscode": "node scripts/build_vscode_companion.js",
+    "build:vscode": "bun run --bun scripts/build_vscode_companion.js",
     "build:all": "npm run build && npm run build:sandbox && npm run build:vscode",
     "build:packages": "npm run build --workspaces",
-    "build:sandbox": "node scripts/build_sandbox.js",
-    "bundle": "npm run generate && node esbuild.config.js && node scripts/copy_bundle_assets.js",
+    "build:sandbox": "bun run --bun scripts/build_sandbox.js",
+    "bundle": "npm run generate && bun run --bun esbuild.config.js && bun run --bun scripts/copy_bundle_assets.js",
     "test": "npm run test --workspaces --if-present",
     "test:ci": "npm run test:ci --workspaces --if-present && npm run test:scripts",
     "test:scripts": "vitest run --config ./scripts/tests/vitest.config.ts",
@@ -49,17 +49,17 @@
     "lint": "eslint . --ext .ts,.tsx && eslint integration-tests && eslint scripts",
     "lint:fix": "eslint . --fix --ext .ts,.tsx && eslint integration-tests --fix && eslint scripts --fix && npm run format",
     "lint:ci": "npm run lint:all",
-    "lint:all": "node scripts/lint.js",
+    "lint:all": "bun run --bun scripts/lint.js",
     "format": "prettier --experimental-cli --write .",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "preflight": "npm run clean && npm ci && npm run format && npm run lint:ci && npm run build && npm run typecheck && npm run test:ci",
     "prepare": "husky && npm run bundle",
-    "prepare:package": "node scripts/prepare-package.js",
-    "release:version": "node scripts/version.js",
-    "telemetry": "node scripts/telemetry.js",
-    "check:lockfile": "node scripts/check-lockfile.js",
-    "clean": "node scripts/clean.js",
-    "pre-commit": "node scripts/pre-commit.js"
+    "prepare:package": "bun run --bun scripts/prepare-package.js",
+    "release:version": "bun run --bun scripts/version.js",
+    "telemetry": "bun run --bun scripts/telemetry.js",
+    "check:lockfile": "bun run --bun scripts/check-lockfile.js",
+    "clean": "bun run --bun scripts/clean.js",
+    "pre-commit": "bun run --bun scripts/pre-commit.js"
   },
   "overrides": {
     "ink": "npm:@jrichman/ink@6.4.6",
@@ -143,5 +143,11 @@
     "*.{json,md}": [
       "prettier --write"
     ]
-  }
+  },
+  "trustedDependencies": [
+    "@vscode/vsce-sign",
+    "gemini-cli-vscode-ide-companion",
+    "protobufjs",
+    "tree-sitter-bash"
+  ]
 }

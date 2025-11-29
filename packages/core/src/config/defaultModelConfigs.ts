@@ -116,15 +116,8 @@ export const DEFAULT_MODEL_CONFIGS: ModelConfigServiceConfig = {
       },
     },
     'edit-corrector': {
-      extends: 'base',
-      modelConfig: {
-        model: 'gemini-2.5-flash-lite',
-        generateContentConfig: {
-          thinkingConfig: {
-            thinkingBudget: 0,
-          },
-        },
-      },
+      extends: 'gemini-3-pro-preview',
+      modelConfig: {},
     },
     'summarizer-default': {
       extends: 'base',
@@ -145,7 +138,7 @@ export const DEFAULT_MODEL_CONFIGS: ModelConfigServiceConfig = {
       },
     },
     'web-search': {
-      extends: 'gemini-2.5-flash-base',
+      extends: 'gemini-3-pro-preview',
       modelConfig: {
         generateContentConfig: {
           tools: [{ googleSearch: {} }],
@@ -153,7 +146,7 @@ export const DEFAULT_MODEL_CONFIGS: ModelConfigServiceConfig = {
       },
     },
     'web-fetch': {
-      extends: 'gemini-2.5-flash-base',
+      extends: 'gemini-3-pro-preview',
       modelConfig: {
         generateContentConfig: {
           tools: [{ urlContext: {} }],
@@ -176,7 +169,7 @@ export const DEFAULT_MODEL_CONFIGS: ModelConfigServiceConfig = {
       },
     },
     'llm-edit-fixer': {
-      extends: 'gemini-2.5-flash-base',
+      extends: 'gemini-3-pro-preview',
       modelConfig: {},
     },
     'next-speaker-checker': {

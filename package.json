@@ -145,5 +145,11 @@
     "*.{json,md}": [
       "prettier --write"
     ]
-  }
+  },
+  "trustedDependencies": [
+    "@vscode/vsce-sign",
+    "gemini-cli-vscode-ide-companion",
+    "protobufjs",
+    "tree-sitter-bash"
+  ]
 }

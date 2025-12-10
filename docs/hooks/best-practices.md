@@ -455,7 +455,7 @@ Add descriptions to help others understand your hooks:
 Add comments in hook scripts:
 
 ```javascript
-#!/usr/bin/env node
+#!/usr/bin/env bun
 /**
  * RAG Tool Filter Hook
  *

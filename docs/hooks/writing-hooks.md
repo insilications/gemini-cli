@@ -440,7 +440,7 @@ chmod +x .gemini/hooks/*.js
 **`.gemini/hooks/init.js`:**
 
 ```javascript
-#!/usr/bin/env node
+#!/usr/bin/env bun
 const { ChromaClient } = require('chromadb');
 const path = require('path');
 const fs = require('fs');
@@ -491,7 +491,7 @@ readStdin().then(main).catch(console.error);
 **`.gemini/hooks/inject-memories.js`:**
 
 ```javascript
-#!/usr/bin/env node
+#!/usr/bin/env bun
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { ChromaClient } = require('chromadb');
 const path = require('path');
@@ -564,7 +564,7 @@ readStdin().then(main).catch(console.error);
 **`.gemini/hooks/rag-filter.js`:**
 
 ```javascript
-#!/usr/bin/env node
+#!/usr/bin/env bun
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 async function main() {
@@ -642,7 +642,7 @@ readStdin().then(main).catch(console.error);
 **`.gemini/hooks/security.js`:**
 
 ```javascript
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
 const SECRET_PATTERNS = [
   /api[_-]?key\s*[:=]\s*['"]?[a-zA-Z0-9_-]{20,}['"]?/i,
@@ -691,7 +691,7 @@ readStdin().then(main).catch(console.error);
 **`.gemini/hooks/auto-test.js`:**
 
 ```javascript
-#!/usr/bin/env node
+#!/usr/bin/env bun
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
@@ -758,7 +758,7 @@ readStdin().then(main).catch(console.error);
 **`.gemini/hooks/record.js`:**
 
 ```javascript
-#!/usr/bin/env node
+#!/usr/bin/env bun
 const fs = require('fs');
 const path = require('path');
 
@@ -817,7 +817,7 @@ readStdin().then(main).catch(console.error);
 **`.gemini/hooks/consolidate.js`:**
 
 ````javascript
-#!/usr/bin/env node
+#!/usr/bin/env bun
 const fs = require('fs');
 const path = require('path');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
